@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C15A1CB24744F0A0041D8E6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C15A1CA24744F0A0041D8E6 /* main.cpp */; };
+		3CED6192247576CA003B7EA6 /* AnimalStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CED6191247576CA003B7EA6 /* AnimalStruct.cpp */; };
+		3CED61972475796E003B7EA6 /* Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CED61962475796E003B7EA6 /* Interface.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		3C15A1C724744F0A0041D8E6 /* animalGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = animalGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C15A1CA24744F0A0041D8E6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CED6191247576CA003B7EA6 /* AnimalStruct.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimalStruct.cpp; sourceTree = "<group>"; };
+		3CED61962475796E003B7EA6 /* Interface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Interface.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				3C15A1CA24744F0A0041D8E6 /* main.cpp */,
+				3CED61962475796E003B7EA6 /* Interface.cpp */,
+				3CED6191247576CA003B7EA6 /* AnimalStruct.cpp */,
 			);
 			path = animalGame;
 			sourceTree = "<group>";
@@ -119,6 +125,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CED61972475796E003B7EA6 /* Interface.cpp in Sources */,
+				3CED6192247576CA003B7EA6 /* AnimalStruct.cpp in Sources */,
 				3C15A1CB24744F0A0041D8E6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
