@@ -1,63 +1,57 @@
-#import "AnimalStruct.cpp"
+#import "Animal.cpp"
 #include <iostream>
 
-
-// начальная настройка
-static animal *setupGame() {
-    animal *q1 = new animal();
-    animal *q2 = new animal("Ваше животное птица?");
-    q2->yes = new animal("Ваше животное попугай?");
-    q2->yes->yes = new animal("", "попугай");
-    
-    q1->no = q2;
-    
-    return q1;
-}
-
-static bool interface(animal *game) {
-    
-     while (game != NULL && game->question != "") {
-        cout<<"y - Да, n - Нет"<<endl;
-        cout<<game->question<<endl;
-        char a;
-        cin>>a; // да/нет
-
-        if (a == 'y' && game->yes != NULL)
-            game = game->yes;
-        else if (a == 'n' && game->no != NULL)
-            game = game->no;
+class Interface {
+public:
+    bool setInterface(Animal *game) {
+        char a; // для хранения y/n
+        
+        // если есть объект и вопрос
+        while (game != NULL && game->getQuestion() != "") {
+            cout<<"y - Да, n - Нет"<<endl;
+            cout<<game->getQuestion()<<endl; // задаём вопрос
+            cin>>a;
+            
+            // если есть следущий элемент
+            if (a == 'y' && game->getYes() != NULL)
+                game = game->getYes();
+            else if (a == 'n' && game->getNo() != NULL)
+                game = game->getNo();
+            else
+                break;
+        }
+        
+        // если нет ответа создаём его
+        if (game->getAnswer() != "")
+            cout<<"Ваше животное: "<<game->getAnswer()<<endl; //ответ
+        else {
+            cout<<"Похоже мы не знаем что это за животное, пожалуйста введите его: ";
+            string q; // характеристика животного
+            string p; // название животного
+            cin>>p;
+            cin.ignore(32767, '\n');
+            Animal *answer = new Animal("", p); // создаём ответ
+            Animal *question1 = new Animal("Ваше животное " + p + "?","", nullptr, answer); // создаём вопрос с названием животного
+            cout<<"Введите его характеристику: ";
+            getline(std::cin, q);
+            q = "Ваше животное обладает " + q + "?";
+            Animal *question2 = new Animal(q, "", nullptr, question1); // создаём вопрос с характеристикой животного
+            
+            // сохраняем вопросы
+            if (a == 'y')
+                game->setYes(question2);
+            else
+                game->setNo(question2);
+        }
+        
+        cout<<"Сыграем ещё?\n";
+        char b;
+        cin>>b;
+        
+        if (b == 'y')
+            return true;
         else
-            break;
+            return false;
     }
-    
-    if (game->answer != "")
-        cout<<"Ваше животное: "<<game->answer<<endl; //ответ
-    else {
-        cout<<"Похоже мы не знаем что это за животное, пожалуйста введите его: ";
-        animal *answer = new animal("");
-        string q;
-        string a;
-        cin>>a;
-        cin.ignore(32767, '\n');
-        answer->answer = a;
-        animal *question1 = new animal("Ваше животное " + a + "?","", nullptr, answer);
-        cout<<"Введите его характеристику: ";
-        getline(std::cin, q);
-        q = "Ваше животное обладает " + q + "?";
-        animal *question2 = new animal(q, "", nullptr, question1);
-        if (game->yes == NULL)
-            game->yes = question2;
-        else
-            game->no = question2;
-    }
-    
-    cout<<"Сыграем ещё?\n";
-    char b;
-    cin>>b;
-    
-    if (b == 'y')
-        return true;
-    else
-        return false;
-}
 
+};

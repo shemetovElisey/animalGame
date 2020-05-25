@@ -1,8 +1,10 @@
 #import "Interface.cpp"
 
 int main() {
-    animal *game = setupGame();
-    bool g = interface(game);
+    Animal *game = new Animal;
+    Interface interface;
+    bool g = interface.setInterface(game);
     while (g)
-        g = interface(game);
+        g = interface.setInterface(game);
 }
+
