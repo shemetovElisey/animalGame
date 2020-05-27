@@ -1,10 +1,13 @@
-#include "Interface.h"
-#include "Animal.h"
+#include <iostream>
+
+#include "game.h"
+#include "question.h"
+
+#include "question.h"
 
 int main() {
-    Interface interface;
-    bool g = interface.setInterface(game);
-    while (g)
-        g = interface.setInterface(game);
+    Game game((Node*)(new Question("2 == 2?")));
+    while (true)
+        game.iterate();
 }
 

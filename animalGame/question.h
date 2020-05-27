@@ -1,9 +1,13 @@
 #pragma once
 #include <string>
 
-class Question {
+#include "node.h"
+
+class Question : Node{
 public:
     Question(std::string text = "Ваше животное млекопитающее?", Question* yes = nullptr, Question* no = nullptr);
+
+    virtual NodeType getType();
 
     std::string getText();
 

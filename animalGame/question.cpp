@@ -5,6 +5,10 @@ using std::string;
 Question::Question(string _text, Question* _yes , Question* _no )
     : text(_text), no(_no), yes(_yes) {};
 
+NodeType Question::getType() {
+    return NodeType::Qustion;
+}
+
 std::string Question::getText() {
     return text;
 }
