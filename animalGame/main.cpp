@@ -1,4 +1,5 @@
-#import "Interface.cpp"
+#include "Interface.h"
+#include "Animal.h"
 
 int main() {
     Animal *game = new Animal;

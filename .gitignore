@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/animalGame/.vs/animalGames/v16
+/animalGame/x64/Debug
+/animalGame/animalGames.vcxproj.filters
+/animalGame/animalGames.vcxproj.user

@@ -1,41 +1,30 @@
-#include <string>
+#include "Animal.h"
 
-using namespace std;
+using std::string;
 
-class Animal {
-    string question;
-    string answer;
-    Animal *no;
-    Animal *yes;
-    
-public:
-    Animal(string _question = "Ваше животное млекопитающее?",
-           string _answer = "",
-           Animal *_no = nullptr,
-           Animal *_yes = nullptr)
-        : question(_question), answer(_answer), no(_no), yes(_yes) {};
-    
-    string getQuestion() {
-        return question;
-    }
-    
-    string getAnswer() {
-        return answer;
-    }
-    
-    Animal *getYes() {
-        return yes;
-    }
-    
-    Animal *getNo() {
-        return no;
-    }
-    
-    void setYes(Animal *_yes) {
-        yes = _yes;
-    }
-    
-    void setNo(Animal *_no) {
-        no = _no;
-    }
-};
+Animal::Animal(string _question, string _answer, Animal* _no , Animal* _yes )
+    : question(_question), answer(_answer), no(_no), yes(_yes) {};
+
+std::string Animal::getQuestion() {
+    return question;
+}
+
+std::string Animal::getAnswer() {
+    return answer;
+}
+
+Animal* Animal::getYes() {
+    return yes;
+}
+
+Animal* Animal::getNo() {
+    return no;
+}
+
+void Animal::setYes(Animal* _yes) {
+    yes = _yes;
+}
+
+void Animal::setNo(Animal* _no) {
+    no = _no;
+}
