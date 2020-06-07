@@ -2,7 +2,7 @@
 
 using std::string;
 
-Question::Question(string _text, Question* _yes , Question* _no )
+Question::Question(string _text, Node* _yes , Node* _no )
     : text(_text), no(_no), yes(_yes) {};
 
 NodeType Question::getType() {
@@ -13,18 +13,18 @@ std::string Question::getText() {
     return text;
 }
 
-Question* Question::getYes() {
+Node* Question::getYes() {
     return yes;
 }
 
-Question* Question::getNo() {
+Node* Question::getNo() {
     return no;
 }
 
-void Question::setYes(Question* _yes) {
+void Question::setYes(Node* _yes) {
     yes = _yes;
 }
 
-void Question::setNo(Question* _no) {
+void Question::setNo(Node* _no) {
     no = _no;
 }

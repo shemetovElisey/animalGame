@@ -5,20 +5,20 @@
 
 class Question : Node{
 public:
-    Question(std::string text = "Ваше животное млекопитающее?", Question* yes = nullptr, Question* no = nullptr);
+    Question(std::string text = "Ваше животное млекопитающее?", Node* yes = nullptr, Node* no = nullptr);
 
     virtual NodeType getType();
 
     std::string getText();
 
-    Question* getYes();
-    Question* getNo();
+    Node* getYes();
+    Node* getNo();
 
-    void setYes(Question* _yes);
-    void setNo(Question* _no);
+    void setYes(Node* _yes);
+    void setNo(Node* _no);
 
 private:
     std::string text;
-    Question* yes;
-    Question* no;
+    Node* yes;
+    Node* no;
 };

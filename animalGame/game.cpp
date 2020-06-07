@@ -20,9 +20,9 @@ void Game::iterate() {
     Node* sel = questTree;
 
     char answer;
-    while (sel) {
+    while (sel && sel->getType() == NodeType::Qustion) {
         cout << ((Question*)sel)->getText() << endl; // задаём вопрос
-        cout << "y - Да, n - Нет" << endl;
+        cout << "y - Yes, n - No" << endl;
         cin >> answer;
 
         if (answer == 'y' && ((Question*)sel)->getYes())
@@ -33,16 +33,33 @@ void Game::iterate() {
             break;
     }
 
-    if (sel->getType() == NodeType::Answer) {
-        cout << "Ваше животное: " << ((Answer*)sel)->getText() << endl; //ответ
-    } else if (sel->getType() == NodeType::Qustion) {
-        cout << "Похоже мы не знаем что это за животное, пожалуйста введите вопрос: ";
-        string quest; // вопрос
-        cin >> quest;
-        if (answer == 'y') {
-            ((Question*)sel)->setYes(new Question(quest));
+    NodeType type = sel->getType();
+    if (type == NodeType::Answer) {
+        cout << "You answer: " << ((Answer*)sel)->getText() << endl; //ответ
+    } else if (type == NodeType::Qustion) {
+        cout << "You know that is it?" << endl;
+        char isAnswer;
+        cin >> isAnswer;
+        if (isAnswer == 'n') {
+            cout << "We dont know wat is it, enter you question: ";
+            string quest; // вопрос
+            cin >> quest;
+            if (answer == 'y') {
+                ((Question*)sel)->setYes((Node*)new Question(quest));
+            }
+            else {
+                ((Question*)sel)->setNo((Node*)new Question(quest));
+            }
         } else {
-            ((Question*)sel)->setNo(new Question(quest));
+            cout << "What is it?" << endl;
+            string text;
+            cin >> text;
+            if (answer == 'y') {
+                ((Question*)sel)->setYes((Node*)new Answer(text));
+            }
+            else {
+                ((Question*)sel)->setNo((Node*)new Answer(text));
+            }
         }
     }
 }

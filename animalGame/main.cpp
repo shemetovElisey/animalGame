@@ -6,7 +6,7 @@
 #include "question.h"
 
 int main() {
-    Game game((Node*)(new Question("2 == 2?")));
+    Game game((Node*)(new Question("You animal mammals?")));
     while (true)
         game.iterate();
 }
