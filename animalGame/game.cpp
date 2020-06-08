@@ -41,7 +41,7 @@ void Game::iterate() {
         char isAnswer;
         cin >> isAnswer;
         if (isAnswer == 'n') {
-            cout << "We dont know wat is it, enter you question: ";
+            cout << "We dont know what is it, enter you question: ";
             string quest; // вопрос
             cin >> quest;
             if (answer == 'y') {
