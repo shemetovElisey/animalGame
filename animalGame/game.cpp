@@ -48,10 +48,10 @@ void Game::iterate() {
             string str;
             cin >> str;
             if (answer == 'y') {
-                ((Question*)prev)->setYes((Node*)new Question(str, sel));
+                ((Question*)prev)->setYes((Node*)new Question(str, nullptr, sel));
             }
             else {
-                ((Question*)prev)->setNo((Node*)new Question(str, sel));
+                ((Question*)prev)->setNo((Node*)new Question(str, nullptr,  sel));
             }
         }
     } else {
