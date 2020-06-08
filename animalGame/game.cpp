@@ -18,6 +18,7 @@ void Game::iterate() {
     }
 
     Node* sel = questTree;
+    Node* prev;
 
     char answer;
     while (sel && sel->getType() == NodeType::Qustion) {
@@ -25,15 +26,51 @@ void Game::iterate() {
         cout << "y - Yes, n - No" << endl;
         cin >> answer;
 
-        if (answer == 'y' && ((Question*)sel)->getYes())
+        if (answer == 'y' && ((Question*)sel)->getYes()) {
+            prev = sel;
             sel = (Node*)((Question*)sel)->getYes();
-        else if (answer == 'n' && ((Question*)sel)->getNo() != NULL)
+        } else if (answer == 'n' && ((Question*)sel)->getNo() != NULL) {
+            prev = sel;
             sel = (Node*)((Question*)sel)->getNo();
-        else
+        } else
             break;
     }
 
     NodeType type = sel->getType();
+    if (type == NodeType::Answer) {
+        cout << "You animal is: " + ((Answer*)sel)->getText() + " (y/n)?" << endl;
+        char know;
+        cin >> know;
+        if (know == 'y') {
+            cout << "You animal is " + ((Answer*)sel)->getText() + "!" << endl;
+        } else {
+            cout << "We dont know what animal, enter question about it: " << endl;
+            string str;
+            cin >> str;
+            if (answer == 'y') {
+                ((Question*)prev)->setYes((Node*)new Question(str, sel));
+            }
+            else {
+                ((Question*)prev)->setNo((Node*)new Question(str, nullptr, sel));
+            }
+        }
+    } else {
+        cout << "We dont know what animal, enter question about it: " << endl;
+        string text;
+        cin >> text;
+
+        cout << "And animal it self: " << endl;
+        string animal;
+        cin >> animal;
+
+        if (answer == 'y') {
+            ((Question*)sel)->setYes((Node*)new Question(text, (Node*)new Answer(animal)));
+        }
+        else {
+            ((Question*)sel)->setNo((Node*)new Question(text, nullptr, (Node*)new Answer(animal)));
+        }
+    }
+    /*NodeType type = sel->getType();
     if (type == NodeType::Answer) {
         cout << "You answer: " << ((Answer*)sel)->getText() << endl; //ответ
     } else if (type == NodeType::Qustion) {
@@ -61,5 +98,5 @@ void Game::iterate() {
                 ((Question*)sel)->setNo((Node*)new Answer(text));
             }
         }
-    }
+    }*/
 }
