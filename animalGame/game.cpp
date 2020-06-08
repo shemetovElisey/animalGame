@@ -18,7 +18,7 @@ void Game::iterate() {
     }
 
     Node* sel = questTree;
-    Node* prev;
+    Node* prev = nullptr;
 
     char answer;
     while (sel && sel->getType() == NodeType::Qustion) {
