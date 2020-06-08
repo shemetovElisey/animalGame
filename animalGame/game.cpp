@@ -51,7 +51,7 @@ void Game::iterate() {
                 ((Question*)prev)->setYes((Node*)new Question(str, sel));
             }
             else {
-                ((Question*)prev)->setNo((Node*)new Question(str, nullptr, sel));
+                ((Question*)prev)->setNo((Node*)new Question(str, sel));
             }
         }
     } else {
@@ -67,7 +67,7 @@ void Game::iterate() {
             ((Question*)sel)->setYes((Node*)new Question(text, (Node*)new Answer(animal)));
         }
         else {
-            ((Question*)sel)->setNo((Node*)new Question(text, nullptr, (Node*)new Answer(animal)));
+            ((Question*)sel)->setNo((Node*)new Question(text, (Node*)new Answer(animal)));
         }
     }
     /*NodeType type = sel->getType();
